@@ -1,0 +1,11 @@
+#! /bin/bash
+
+export CHEF_TARGET=docker
+export GUEST_IP=192.168.33.100
+
+# FIXME up provision --provision のときだけやる
+# 作業ツリーがあったらやらない
+git submodule foreach git pull
+
+sh ./server/vagrant-prepare.sh $@
+
