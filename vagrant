@@ -1,11 +1,24 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
-export CHEF_TARGET=docker
-export GUEST_IP=192.168.33.100
+VAGRANT_CONFIG=`cat << EOT
+{
+  "guest_ip": "192.168.33.100",
+  "chef_target": "docker",
+  "hosts": [
+  ],
+  "exports": {
+  },
+  "fstab": [
+  ]
+}
+EOT`
 
-# FIXME up provision --provision のときだけやる
-# 作業ツリーがあったらやらない
-git submodule foreach git pull
+SERVER_NAMES=''
 
-sh ./server/vagrant-prepare.sh $@
+if [ ! -d server ] ; then
+  git submodule init
+  git submodule update
+fi
+
+source ./server/vagrant-prepare.sh
 
