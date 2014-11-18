@@ -1,0 +1,11 @@
+---
+hostname: "docker"
+ip: "192.168.33.100"
+memory: 2048
+cpus: 1
+natdnsproxy1: 'off'
+natdnshostresolver1: 'off'
+
+nameservers:
+   - '8.8.8.8'
+   - '8.8.4.4'
