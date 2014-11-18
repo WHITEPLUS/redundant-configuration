@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 path = "#{File.dirname(__FILE__)}"
 
-unless File.exists?('server')
+unless Dir.exists?('server/.git')
   p `git submodule init`
   p `git submodule update`
 end
